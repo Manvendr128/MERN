@@ -40,41 +40,32 @@ const requesthandler = (req,res)=>{
       // object bnkr cheeje aa gyi
       // parsing of data
       const params = new URLSearchParams(fullbody);
-      // const bodyobject = {};
-      // for(const [key,val] of params.entries()){
-      //   bodyobject [key] = val;
-      // }
+      
 
       // other method
 
       const bodyobject = Object.fromEntries(params);
       console.log(bodyobject);
-      // BLOCKING OF CODE
-      // fs.writeFileSync('user.txt',JSON.stringify(bodyobject));
-        fs.writeFile('user.txt',JSON.stringify(bodyobject),error=>{
-          console.log("Data written Successfully");
-        });
+      // writefilesync bolck kr dega everything isliye async use krenge
+      fs.writeFile('user.txt',JSON.stringify(bodyobject),error=>{
+        console.log("data return succesfully");
+
+        res.statusCode = 302;
+        res.setHeader('Location','/');
+        return res.end();
+      });
     })
-  
-  
-    res.setHeader('Content-Type','text/html');
-    res.write('<html>');
-    res.write('<head><title></title></head>');
-    res.write('<body><h1>"You have Submit your details."</h1></body>');
-    res.write('</html>');
-    return res.end();
-    
   }
-  res.setHeader('Content-Type','text/html');
+  // already kaa likh diya hai too ye chlne kaa koi mtlb ni agr match naa ho tb chlna
+
+  else{res.setHeader('Content-Type','text/html');
   res.write('<html>');
   res.write('<head><title>Complete Coding </title></head>');
   res.write('<body><h1>Like / share / subscribe</h1></body>')
   res.write('</html>');
   res.end();
-  };
+  }
+};
+
 
   module.exports = requesthandler;
-// const port = 3000;
-// server.listen(port,()=>{
-//   console.log(`server starts at http://localhost:${port}`);
-// });
