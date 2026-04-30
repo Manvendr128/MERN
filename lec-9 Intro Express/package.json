@@ -1,17 +1,17 @@
 {
-  "name": "npm-test",
+  "name": "errors-and-debug",
   "version": "1.0.0",
-  "description": "This project is being created to learn baout npm.",
+  "description": "Learn error handling",
   "license": "ISC",
-  "author": "Complete Coding",
+  "author": "",
   "type": "commonjs",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
-    "khul-ja-sim-sim": "nodemon app.js"
+    "start": "nodemon app.js"
   },
   "dependencies": {
+    "express": "^5.2.1",
     "nodemon": "^3.1.14"
   }
 }
