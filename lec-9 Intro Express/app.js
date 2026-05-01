@@ -4,7 +4,7 @@
 const express = require('express'); 
 const app = express();
 //local module
-const handler = require('./user');
+// const handler = require('./user');
 
 //Adding Middleware
 
@@ -15,25 +15,35 @@ const handler = require('./user');
 //   next(); // ye aage wale pr bhejega ye hta diya too agli middleware nhi chlegi
 // });
 
-app.get("/",(req,res,next)=>{
-  console.log("comt to first middlware",req.url,req.method);
-  // res.send('<p> welcome to first page</p>');
-  next();
+// app.get("/",(req,res,next)=>{
+//   console.log("comt to first middlware",req.url,req.method);
+//   // res.send('<p> welcome to first page</p>');
+//   next();
 
-})
-// second-middleware
+// })
+// // second-middleware
 
-app.post("/submit-details",(req,res,next)=>{
-  console.log("came in third middleware",req.url,req.method);
-  //Sending response
-  res.send('<p>Welcome to Coding Page</p>')
-})
-app.use("/",(req,res,next)=>{
-  console.log("came in second middleware",req.url,req.method);
-  res.send('<p>Welcome to second Page</p>')
-  next(); // ye aage wale pr bhejega ye hta diya too agli middleware nhi chlegi
-});
+// app.post("/submit-details",(req,res,next)=>{
+//   console.log("came in third middleware",req.url,req.method);
+//   //Sending response
+//   res.send('<p>Welcome to Coding Page</p>')
+// })
+// app.use("/",(req,res,next)=>{
+//   console.log("came in second middleware",req.url,req.method);
+//   res.send('<p>Welcome to second Page</p>')
+//   next(); // ye aage wale pr bhejega ye hta diya too agli middleware nhi chlegi
+// });
 //third- middleware
+
+app.use((req,res,next)=>{
+  console.log("first middleware",req.url,req.method);
+  next();
+})
+
+app.use((req,res,next)=>{
+  console.log("seconf middleware",req.url,req.method);
+  res.send();
+})
 
 
 
